@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2pg8t866gqbf"]
+[gd_scene load_steps=9 format=3 uid="uid://b2pg8t866gqbf"]
 
 [ext_resource type="PackedScene" uid="uid://c5kqo4s4wkjd5" path="res://actor.tscn" id="1_ofkfo"]
 
@@ -26,6 +26,9 @@ albedo_color = Color(0.165656, 0.165656, 0.165656, 1)
 material = SubResource("StandardMaterial3D_x4nrf")
 size = Vector2(20, 20)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q4dp1"]
+points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
+
 [node name="Main" type="Node3D"]
 
 [node name="Environment" type="Node3D" parent="."]
@@ -48,4 +51,9 @@ mesh = SubResource("PlaneMesh_5tu31")
 [node name="Actor" parent="Actors" instance=ExtResource("1_ofkfo")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.673685, -0.471542, 0.569031, 0, 0.769982, 0.638065, -0.739018, -0.429855, 0.518726, 5.73302, 6.42854, 5.22619)
+transform = Transform3D(0.673685, -0.471542, 0.569031, 0, 0.769983, 0.638065, -0.739018, -0.429855, 0.518726, 9.27661, 10.402, 8.45651)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_q4dp1")
