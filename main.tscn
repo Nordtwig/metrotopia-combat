@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2pg8t866gqbf"]
+
+[ext_resource type="PackedScene" uid="uid://c5kqo4s4wkjd5" path="res://actor.tscn" id="1_ofkfo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o260w"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_utnkv"]
+sky_material = SubResource("ProceduralSkyMaterial_o260w")
+
+[sub_resource type="Environment" id="Environment_etn38"]
+background_mode = 2
+sky = SubResource("Sky_utnkv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_qgygl"]
+vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.5, 0.5, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4nrf"]
+albedo_color = Color(0.165656, 0.165656, 0.165656, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5tu31"]
+material = SubResource("StandardMaterial3D_x4nrf")
+size = Vector2(20, 20)
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_etn38")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_qgygl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = SubResource("PlaneMesh_5tu31")
+
+[node name="Actors" type="Node3D" parent="."]
+
+[node name="Actor" parent="Actors" instance=ExtResource("1_ofkfo")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.673685, -0.471542, 0.569031, 0, 0.769982, 0.638065, -0.739018, -0.429855, 0.518726, 5.73302, 6.42854, 5.22619)
