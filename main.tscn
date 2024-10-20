@@ -65,6 +65,11 @@ navigation_mesh = SubResource("NavigationMesh_qgygl")
 [node name="Actors" type="Node3D" parent="."]
 
 [node name="Actor" parent="Actors" instance=ExtResource("1_ofkfo")]
+_movement_speed = null
+
+[node name="Actor2" parent="Actors" instance=ExtResource("1_ofkfo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.675, 0, -7.49206)
+_movement_speed = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["navmesh"]]
 mesh = SubResource("PlaneMesh_5tu31")

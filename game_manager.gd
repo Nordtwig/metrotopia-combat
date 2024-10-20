@@ -27,3 +27,4 @@ func _input(event: InputEvent) -> void:
 				_indicator.global_position = target_position
 			elif intersection.collider.is_in_group("actors"):
 				print("hit actor")
+				_actor.set_target(intersection.collider)
