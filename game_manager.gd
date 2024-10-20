@@ -3,7 +3,12 @@ extends Node3D
 
 @export var _camera: Camera3D
 @export var _actor: CharacterBody3D
+@export var _actor2: CharacterBody3D
 @export var _indicator: MeshInstance3D
+
+
+func _ready():
+	_actor2.set_target(_actor)
 
 
 func _input(event: InputEvent) -> void:
