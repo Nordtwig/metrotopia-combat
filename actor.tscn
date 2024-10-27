@@ -16,7 +16,6 @@ size = Vector3(0.2, 0.2, 1)
 [node name="Actor" type="CharacterBody3D" groups=["actors"]]
 collision_layer = 2
 script = ExtResource("1_myqgh")
-_movement_speed = null
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
