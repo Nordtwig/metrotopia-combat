@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 @export var _movement_speed: float = 4.0
+@export var _bullet_scene: PackedScene
 
 var _target: Node3D = null
 

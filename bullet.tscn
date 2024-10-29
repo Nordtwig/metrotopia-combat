@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgrssvrpv4sjq"]
+
+[ext_resource type="PackedScene" uid="uid://d3qt77slbpjhv" path="res://projectile.tscn" id="1_nbh1a"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oxrf3"]
+radius = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_8mmm8"]
+radius = 0.1
+height = 0.2
+
+[node name="Bullet" instance=ExtResource("1_nbh1a")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_oxrf3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("SphereMesh_8mmm8")
