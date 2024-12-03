@@ -10,13 +10,12 @@ var _target: Node3D = null
 
 
 func _ready() -> void:
-	print("Actor spawned")
+	Logger.log("Actor spawned")
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 
 
 func _physics_process(delta: float) -> void:
 	if _target:
-		print(_target.position)
 		_face_target(delta)
 		
 	if nav_agent.is_navigation_finished():

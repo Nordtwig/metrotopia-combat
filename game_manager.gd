@@ -26,10 +26,8 @@ func _input(event: InputEvent) -> void:
 		var intersection: Dictionary = state.intersect_ray(ray_query)
 		if intersection.size() > 0:
 			if intersection.collider.is_in_group("ground"):
-				print("hit ground")
 				var target_position: Vector3 = intersection["position"] as Vector3
 				_actor.set_movement_target(target_position)
 				_indicator.global_position = target_position
 			elif intersection.collider.is_in_group("actors"):
-				print("hit actor")
 				_actor.set_target(intersection.collider)
