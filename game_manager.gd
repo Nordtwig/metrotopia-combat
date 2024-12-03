@@ -31,3 +31,6 @@ func _input(event: InputEvent) -> void:
 				_indicator.global_position = target_position
 			elif intersection.collider.is_in_group("actors"):
 				_actor.set_target(intersection.collider)
+	if event.is_action_pressed("ui_accept"):
+		print("toggling mute log")
+		Logger.mute_logs = !Logger.mute_logs
