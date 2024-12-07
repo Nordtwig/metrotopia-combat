@@ -41,11 +41,11 @@ albedo_color = Color(1, 0, 1, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_usyuv"]
 material = SubResource("StandardMaterial3D_3g6qr")
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("_camera", "_actor", "_actor2", "_indicator")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("_camera", "_actor", "_enemies", "_indicator")]
 script = ExtResource("1_krrju")
 _camera = NodePath("Camera3D")
 _actor = NodePath("Actors/Actor")
-_actor2 = NodePath("Actors/Actor2")
+_enemies = [NodePath("Actors/Actor2"), NodePath("Actors/Actor3"), NodePath("Actors/Actor4"), NodePath("Actors/Actor5")]
 _indicator = NodePath("Indicator")
 
 [node name="Environment" type="Node3D" parent="."]
