@@ -1,4 +1,5 @@
 extends Node3D
+class_name GameManager
 
 
 @export var _camera: Camera3D
@@ -8,6 +9,7 @@ extends Node3D
 
 
 func _ready():
+	Global.game_manager = self
 	for enemy in _enemies:
 		enemy.set_target(_actor)
 
