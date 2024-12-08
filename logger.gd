@@ -1,6 +1,7 @@
 extends Node
 
-var mute_logs: bool = false
+
+var mute_logs: bool = true
 
 
 func log(message: String) -> void:

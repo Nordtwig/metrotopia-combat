@@ -1,14 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5kqo4s4wkjd5"]
 
 [ext_resource type="Script" path="res://actor.gd" id="1_myqgh"]
+[ext_resource type="Material" uid="uid://bc4htv7rxrpe0" path="res://faction_uniform_neutral.tres" id="2_4mfsq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ydqao"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obr0m"]
-albedo_color = Color(3.85046e-07, 0.615915, 0.851685, 1)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vlalm"]
-material = SubResource("StandardMaterial3D_obr0m")
+material = ExtResource("2_4mfsq")
 
 [sub_resource type="BoxMesh" id="BoxMesh_wsk55"]
 size = Vector3(0.2, 0.2, 1)

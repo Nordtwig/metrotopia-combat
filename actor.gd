@@ -1,8 +1,17 @@
 extends CharacterBody3D
+class_name Actor
 
+
+enum FACTION  {
+	PLAYER,
+	MERC,
+	CORP,
+	GOV,
+}
 
 @export var _movement_speed: float = 4.0
 @export var _bullet_scene: PackedScene
+@export var actor_faction: FACTION
 
 var _target: Node3D = null
 
@@ -11,6 +20,9 @@ var _target: Node3D = null
 
 func _ready() -> void:
 	Logger.log("Actor spawned")
+	# TODO Implement Faction Data Object and Materials Object
+	# %Model/MeshInstance3D.mesh.material = 
+	
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 
 
