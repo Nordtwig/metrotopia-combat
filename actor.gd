@@ -90,9 +90,9 @@ func _check_if_facing_target() -> bool:
 
 func _shoot() -> void:
 	var bullet_instance = _bullet_scene.instantiate()
-	bullet_instance.global_position = muzzle_marker.global_position
 	bullet_instance.rotation = muzzle_marker.global_rotation
 	get_tree().root.add_child(bullet_instance)
+	bullet_instance.global_position = muzzle_marker.global_position
 	_is_ready_to_shoot = false
 	gun_cycle_timer.start()
 

@@ -38,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325076, 1.20164, 0.469448)
 mesh = SubResource("BoxMesh_wsk55")
 
 [node name="RayCast3D" type="RayCast3D" parent="Rifle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 target_position = Vector3(0, 0, 1000)
 collision_mask = 2
 
