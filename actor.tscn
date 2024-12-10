@@ -20,6 +20,8 @@ _bullet_scene = ExtResource("2_e0vk7")
 actor_faction = null
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -41,6 +43,6 @@ target_position = Vector3(0, 0, 1000)
 collision_mask = 2
 
 [node name="MuzzleMarker" type="Marker3D" parent="Rifle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.626073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.780375)
 
 [node name="GunCycleTimer" type="Timer" parent="Rifle"]

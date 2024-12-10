@@ -31,4 +31,5 @@ right_click={
 [layer_names]
 
 3d_physics/layer_1="ground"
-3d_physics/layer_2="actor"
+3d_physics/layer_2="actors"
+3d_physics/layer_3="projectiles"
