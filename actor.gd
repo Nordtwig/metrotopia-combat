@@ -39,7 +39,6 @@ func _process(_delta):
 
 func _physics_process(delta: float) -> void:
 	if _target:
-		Logger.log(str(_target.position))
 		_face_target(delta)
 	
 	if !_is_aiming_at_target and _check_if_facing_target():

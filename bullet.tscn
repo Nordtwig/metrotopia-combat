@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgrssvrpv4sjq"]
+[gd_scene load_steps=7 format=3 uid="uid://dgrssvrpv4sjq"]
 
 [ext_resource type="PackedScene" uid="uid://d3qt77slbpjhv" path="res://projectile.tscn" id="1_nbh1a"]
 [ext_resource type="Script" path="res://bullet.gd" id="2_7e8up"]
@@ -16,11 +16,15 @@ material = SubResource("StandardMaterial3D_c76bt")
 radius = 0.1
 height = 0.4
 
-[node name="Bullet" instance=ExtResource("1_nbh1a")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_pv3cs"]
+radius = 0.164074
+
+[node name="Bullet" node_paths=PackedStringArray("hitscan_component") instance=ExtResource("1_nbh1a")]
 collision_layer = 4
 collision_mask = 7
 gravity_scale = 0.0
 script = ExtResource("2_7e8up")
+hitscan_component = NodePath("HitscanComponent")
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_oxrf3")
@@ -28,3 +32,11 @@ shape = SubResource("SphereShape3D_oxrf3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_8mmm8")
+
+[node name="HitscanComponent" type="Area3D" parent="." index="2"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitscanComponent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.144481)
+shape = SubResource("SphereShape3D_pv3cs")

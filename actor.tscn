@@ -1,8 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5kqo4s4wkjd5"]
+[gd_scene load_steps=11 format=3 uid="uid://c5kqo4s4wkjd5"]
 
 [ext_resource type="Script" path="res://actor.gd" id="1_myqgh"]
 [ext_resource type="Material" uid="uid://bc4htv7rxrpe0" path="res://faction_uniform_neutral.tres" id="2_4mfsq"]
 [ext_resource type="PackedScene" uid="uid://dgrssvrpv4sjq" path="res://bullet.tscn" id="2_e0vk7"]
+[ext_resource type="PackedScene" uid="uid://cu880p0tpneo2" path="res://health_component.tscn" id="3_wcl3b"]
+[ext_resource type="PackedScene" uid="uid://bb4vjtpos5oxw" path="res://hitbox_component.tscn" id="4_jgko4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6g36a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_teoy4"]
+height = 1.25773
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ydqao"]
 
@@ -14,10 +21,22 @@ size = Vector3(0.2, 0.2, 1)
 
 [node name="Actor" type="CharacterBody3D" groups=["actors"]]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_myqgh")
-_movement_speed = null
 _bullet_scene = ExtResource("2_e0vk7")
-actor_faction = null
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_wcl3b")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_jgko4")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HeadHitboxCollisionShape" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59024, 0)
+shape = SubResource("SphereShape3D_6g36a")
+
+[node name="BodyHitboxCollisionShape" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.731769, 0)
+shape = SubResource("CylinderShape3D_teoy4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
