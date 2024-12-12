@@ -81,7 +81,7 @@ func _check_if_facing_target() -> bool:
 		return false
 
 	if muzzle_raycast.is_colliding() and muzzle_raycast.get_collider() == _target:
-		print("Aiming at target")
+		Logger.log("Aiming at target")
 		return true
 	
 	return false
