@@ -1,6 +1,7 @@
 extends Node
 
 signal clickable_clicked(node: Node3D)
+signal actor_died(actor: Actor)
 
 
 func _ready() -> void:

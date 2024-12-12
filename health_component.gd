@@ -16,4 +16,4 @@ func take_damage(attack) -> void:
 	health -= attack.attack_damage
 
 	if health <= 0:
-		print("died")
+		get_parent()._die()

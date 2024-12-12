@@ -9,9 +9,15 @@ enum FACTION  {
 	GOV,
 }
 
+enum STATE {
+	ALIVE,
+	DEAD
+}
+
 @export var _movement_speed: float = 4.0
 @export var _bullet_scene: PackedScene
 @export var actor_faction: FACTION
+@export var actor_state: STATE = STATE.ALIVE
 
 var _target: Node3D = null
 var _is_aiming_at_target: bool = false
@@ -21,6 +27,8 @@ var _is_ready_to_shoot: bool = true
 @onready var muzzle_marker: Marker3D = get_node("Rifle/MuzzleMarker")
 @onready var muzzle_raycast: RayCast3D = get_node("Rifle/RayCast3D")
 @onready var gun_cycle_timer: Timer = get_node("Rifle/GunCycleTimer")
+@onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
+@onready var hitbox_component: HitboxComponent = get_node("HitboxComponent")
 
 
 func _ready() -> void:
@@ -30,14 +38,30 @@ func _ready() -> void:
 	
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	gun_cycle_timer.timeout.connect(_on_gun_cycle_timer_timeout)
+	Events.actor_died.connect(_on_actor_died)
 
+	match actor_state:
+		STATE.ALIVE:
+			gun_cycle_timer.start()
+		STATE.DEAD:
+			_target = null
+			_is_aiming_at_target = false
+			_is_ready_to_shoot = false
+			gun_cycle_timer.stop()
+		
 
 func _process(_delta):
-	if _is_ready_to_shoot and _is_aiming_at_target:
+	if actor_state == STATE.DEAD:
+		return
+
+	if _is_ready_to_shoot and _is_aiming_at_target and _target:
 		_shoot()
 
 
 func _physics_process(delta: float) -> void:
+	if actor_state == STATE.DEAD:
+		return
+
 	if _target:
 		_face_target(delta)
 	
@@ -96,6 +120,14 @@ func _shoot() -> void:
 	gun_cycle_timer.start()
 
 
+func _die() -> void:
+	animation_player.play("die")
+	$Rifle.visible = false
+	for child in hitbox_component.get_children():
+		if child is CollisionShape3D:
+			child.disabled = true
+
+
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = safe_velocity
 	move_and_slide()
@@ -103,3 +135,11 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 
 func _on_gun_cycle_timer_timeout() -> void:
 	_is_ready_to_shoot = true
+
+
+func _on_actor_died(actor: Actor)  -> void:
+	if _target == actor:
+		_target = null
+		_is_aiming_at_target = false
+		_is_ready_to_shoot = false
+		gun_cycle_timer.stop()
