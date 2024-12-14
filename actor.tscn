@@ -88,6 +88,7 @@ _bullet_scene = ExtResource("2_e0vk7")
 [node name="HealthComponent" parent="." instance=ExtResource("3_wcl3b")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_jgko4")]
+collision_mask = 0
 health_component = NodePath("../HealthComponent")
 
 [node name="HeadHitboxCollisionShape" type="CollisionShape3D" parent="HitboxComponent"]

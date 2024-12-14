@@ -121,11 +121,15 @@ func _shoot() -> void:
 
 
 func _die() -> void:
-	animation_player.play("die")
-	$Rifle.visible = false
-	for child in hitbox_component.get_children():
-		if child is CollisionShape3D:
-			child.disabled = true
+	if actor_state != STATE.DEAD:
+		actor_state = STATE.DEAD
+		animation_player.play("die")
+		Events.actor_died.emit(self)
+		$Rifle.visible = false
+		hitbox_component.is_disabled = true
+		for child in hitbox_component.get_children():
+			if child is CollisionShape3D:
+				child.disabled = true
 
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
@@ -138,6 +142,7 @@ func _on_gun_cycle_timer_timeout() -> void:
 
 
 func _on_actor_died(actor: Actor)  -> void:
+	print("I noticed %d dying", actor)
 	if _target == actor:
 		_target = null
 		_is_aiming_at_target = false

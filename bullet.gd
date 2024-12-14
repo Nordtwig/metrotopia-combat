@@ -12,7 +12,8 @@ func _ready():
 	
 
 func _on_hitscan_component_area_entered(area)  -> void:
-	if area is HitboxComponent:
+	if area is HitboxComponent and !area.is_disabled:
+		print(area)
 		var hitbox: HitboxComponent = area
 
 		var attack = Attack.new()
