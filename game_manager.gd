@@ -11,8 +11,8 @@ class_name GameManager
 
 func _ready():
 	Global.game_manager = self
-	for enemy in _enemies:
-		enemy.set_target(_actor)
+	# for enemy in _enemies:
+	# 	enemy.set_target(_actor)
 
 
 func _input(event: InputEvent) -> void:

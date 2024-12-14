@@ -1,7 +1,7 @@
 extends Marker3D
 
 
-@export var pan_speed: float = 1.5
+@export var pan_speed: float = 1.0
 
 
 func _physics_process(delta: float) -> void:

@@ -20,7 +20,6 @@ enum STATE {
 @export var actor_state: STATE = STATE.ALIVE
 
 var _target: Node3D = null
-var _is_aiming_at_target: bool = false
 var _is_ready_to_shoot: bool = true
 
 @onready var nav_agent: NavigationAgent3D = get_node("NavigationAgent3D")
@@ -45,7 +44,6 @@ func _ready() -> void:
 			gun_cycle_timer.start()
 		STATE.DEAD:
 			_target = null
-			_is_aiming_at_target = false
 			_is_ready_to_shoot = false
 			gun_cycle_timer.stop()
 		
@@ -54,7 +52,7 @@ func _process(_delta):
 	if actor_state == STATE.DEAD:
 		return
 
-	if _is_ready_to_shoot and _is_aiming_at_target and _target:
+	if _is_ready_to_shoot and _check_if_facing_target():
 		_shoot()
 
 
@@ -65,9 +63,6 @@ func _physics_process(delta: float) -> void:
 	if _target:
 		_face_target(delta)
 	
-	if !_is_aiming_at_target and _check_if_facing_target():
-		_is_aiming_at_target = true
-
 	if nav_agent.is_navigation_finished():
 		return
 
@@ -91,7 +86,6 @@ func set_movement_target(_target_position: Vector3) -> void:
 func set_target(_target_node: Node3D) -> void:
 	if _target != _target_node:
 		_target = _target_node
-		_is_aiming_at_target = false
 
 
 func get_rotation_to_target() -> Vector2:
@@ -125,6 +119,7 @@ func _die() -> void:
 		actor_state = STATE.DEAD
 		animation_player.play("die")
 		Events.actor_died.emit(self)
+		velocity = Vector3.ZERO
 		$Rifle.visible = false
 		hitbox_component.is_disabled = true
 		for child in hitbox_component.get_children():
@@ -142,9 +137,5 @@ func _on_gun_cycle_timer_timeout() -> void:
 
 
 func _on_actor_died(actor: Actor)  -> void:
-	print("I noticed %d dying", actor)
 	if _target == actor:
 		_target = null
-		_is_aiming_at_target = false
-		_is_ready_to_shoot = false
-		gun_cycle_timer.stop()
