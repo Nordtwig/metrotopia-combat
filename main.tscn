@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2pg8t866gqbf"]
+[gd_scene load_steps=16 format=3 uid="uid://b2pg8t866gqbf"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_krrju"]
 [ext_resource type="PackedScene" uid="uid://c5kqo4s4wkjd5" path="res://actor.tscn" id="1_ofkfo"]
 [ext_resource type="PackedScene" uid="uid://by1k17wl5mso1" path="res://wall_segment.tscn" id="2_uxo1b"]
+[ext_resource type="Script" path="res://camera.gd" id="3_2sdfu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o260w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,7 +48,7 @@ material = SubResource("StandardMaterial3D_4r0qn")
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("_camera", "_actor", "_enemies", "_indicator", "_aim_indicator")]
 script = ExtResource("1_krrju")
-_camera = NodePath("Camera3D")
+_camera = NodePath("CameraArm/Camera")
 _actor = NodePath("Actors/Actor")
 _enemies = [NodePath("Actors/Actor2"), NodePath("Actors/Actor3"), NodePath("Actors/Actor4"), NodePath("Actors/Actor5")]
 _indicator = NodePath("MoveIndicator")
@@ -78,7 +79,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.00648, 0, 0)
 mesh = SubResource("PlaneMesh_u0leq")
 skeleton = NodePath("../../../NavigationRegion3D")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraArm" type="Marker3D" parent="."]
+script = ExtResource("3_2sdfu")
+
+[node name="Camera" type="Camera3D" parent="CameraArm"]
+unique_name_in_owner = true
 transform = Transform3D(0.673685, -0.471542, 0.569031, 0, 0.769983, 0.638065, -0.739018, -0.429855, 0.518726, 9.27661, 10.402, 8.45651)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
