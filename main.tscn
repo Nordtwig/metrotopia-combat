@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2pg8t866gqbf"]
+[gd_scene load_steps=19 format=3 uid="uid://b2pg8t866gqbf"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_krrju"]
 [ext_resource type="PackedScene" uid="uid://c5kqo4s4wkjd5" path="res://actor.tscn" id="1_ofkfo"]
 [ext_resource type="PackedScene" uid="uid://by1k17wl5mso1" path="res://wall_segment.tscn" id="2_uxo1b"]
 [ext_resource type="Script" path="res://camera.gd" id="3_2sdfu"]
+[ext_resource type="Material" uid="uid://mxco6sm3daii" path="res://faction_uniform_player.tres" id="5_vcap6"]
+[ext_resource type="Material" uid="uid://bc4htv7rxrpe0" path="res://faction_uniform_neutral.tres" id="6_iss8g"]
+[ext_resource type="Material" uid="uid://bypwg2os2xcfs" path="res://faction_uniform_cartel.tres" id="6_nxp1p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o260w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -92,22 +95,27 @@ navigation_mesh = SubResource("NavigationMesh_qgygl")
 [node name="Actors" type="Node3D" parent="."]
 
 [node name="Actor" parent="Actors" instance=ExtResource("1_ofkfo")]
+uniform_material = ExtResource("5_vcap6")
 
 [node name="Actor2" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.675, 0, -7.49206)
 actor_faction = 2
+uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor3" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.20343, 0, -2.84393)
 actor_faction = 2
+uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor4" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.06587, 0, 7.90332)
 actor_faction = 2
+uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor5" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3556, 0, -8.43471)
 actor_faction = 3
+uniform_material = ExtResource("6_iss8g")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["ground"]]
 

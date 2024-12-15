@@ -18,6 +18,7 @@ enum STATE {
 @export var _bullet_scene: PackedScene
 @export var actor_faction: FACTION
 @export var actor_state: STATE = STATE.ALIVE
+@export var uniform_material: Material
 
 var _target: Node3D = null
 var _is_ready_to_shoot: bool = true
@@ -28,16 +29,20 @@ var _is_ready_to_shoot: bool = true
 @onready var gun_cycle_timer: Timer = get_node("Rifle/GunCycleTimer")
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var hitbox_component: HitboxComponent = get_node("HitboxComponent")
+@onready var model_mesh: MeshInstance3D = get_node("Model/MeshInstance3D")
 
 
 func _ready() -> void:
 	Logger.log("Actor spawned")
 	# TODO Implement Faction Data Object and Materials Object
 	# %Model/MeshInstance3D.mesh.material = 
+
 	
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	gun_cycle_timer.timeout.connect(_on_gun_cycle_timer_timeout)
 	Events.actor_died.connect(_on_actor_died)
+
+	model_mesh.material_override = uniform_material
 
 	match actor_state:
 		STATE.ALIVE:
