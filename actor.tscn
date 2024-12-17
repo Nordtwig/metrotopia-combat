@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5kqo4s4wkjd5"]
+[gd_scene load_steps=16 format=3 uid="uid://c5kqo4s4wkjd5"]
 
 [ext_resource type="Script" path="res://actor.gd" id="1_myqgh"]
 [ext_resource type="Material" uid="uid://bc4htv7rxrpe0" path="res://faction_uniform_neutral.tres" id="2_4mfsq"]
@@ -79,6 +79,16 @@ _data = {
 "die": SubResource("Animation_i633r")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xemqo"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.160784, 0.34902, 0, 0.588235)
+billboard_mode = 2
+
+[sub_resource type="TorusMesh" id="TorusMesh_ycaxe"]
+material = SubResource("StandardMaterial3D_xemqo")
+inner_radius = 0.875
+
 [node name="Actor" type="CharacterBody3D" groups=["actors"]]
 collision_layer = 2
 collision_mask = 3
@@ -131,3 +141,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.780375)
 libraries = {
 "": SubResource("AnimationLibrary_i83m5")
 }
+
+[node name="SelectedIndicator" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.365021, 0, 0, 0, 1, 0, 0.110674, 0)
+visible = false
+mesh = SubResource("TorusMesh_ycaxe")

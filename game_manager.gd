@@ -11,6 +11,7 @@ class_name GameManager
 
 func _ready():
 	Global.game_manager = self
+	_actor._set_selected_indicator(true)
 	# for enemy in _enemies:
 	# 	enemy.set_target(_actor)
 
@@ -43,7 +44,7 @@ func _input(event: InputEvent) -> void:
 
 		if event.is_action_pressed("left_click"):
 			if intersection.collider.is_in_group("ground"):
-				print("deselect")
+				_actor._set_selected_indicator(false)
 			elif intersection.collider.is_in_group("actors"):
 				Events.clickable_clicked.emit(intersection.collider)
 	if event.is_action_pressed("ui_accept"):

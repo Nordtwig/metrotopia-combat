@@ -132,6 +132,10 @@ func _die() -> void:
 				child.disabled = true
 
 
+func _set_selected_indicator(setting: bool)  -> void:
+	$SelectedIndicator.visible = setting
+
+
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = safe_velocity
 	move_and_slide()
