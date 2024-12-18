@@ -52,8 +52,11 @@ func _input(event: InputEvent) -> void:
 					actor._set_selected_indicator(false)
 					_actors.erase(actor)
 			elif intersection.collider.is_in_group("actors"):
-				for actor in _actors:
-					actor._set_selected_indicator(false)
+				if Input.is_action_pressed("shift_modifier"):
+					Events.clickable_clicked.emit(intersection.collider)
+				else:
+					for actor in _actors:
+						actor._set_selected_indicator(false)
 				Events.clickable_clicked.emit(intersection.collider)
 	if event.is_action_pressed("ui_accept"):
 		print("toggling mute log")

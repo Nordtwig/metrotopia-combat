@@ -153,6 +153,7 @@ func _on_actor_died(actor: Actor)  -> void:
 
 func _on_clickable_clicked(node: Node3D) -> void:
 	if !node.is_in_group("actors"):
+		_set_selected_indicator(false)
 		return
 	
 	if node != self:
