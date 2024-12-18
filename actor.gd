@@ -41,6 +41,7 @@ func _ready() -> void:
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	gun_cycle_timer.timeout.connect(_on_gun_cycle_timer_timeout)
 	Events.actor_died.connect(_on_actor_died)
+	Events.clickable_clicked.connect(_on_clickable_clicked)
 
 	model_mesh.material_override = uniform_material
 
@@ -148,3 +149,17 @@ func _on_gun_cycle_timer_timeout() -> void:
 func _on_actor_died(actor: Actor)  -> void:
 	if _target == actor:
 		_target = null
+
+
+func _on_clickable_clicked(node: Node3D) -> void:
+	if !node.is_in_group("actors"):
+		return
+	
+	if node != self:
+		return
+
+	if actor_faction != FACTION.PLAYER:
+		return
+
+	_set_selected_indicator(true)
+	Events.playable_actor_selected.emit(self)
