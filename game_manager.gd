@@ -14,8 +14,8 @@ func _ready():
 	Events.playable_actor_selected.connect(_on_playable_actor_selected)
 	for actor in _actors:
 		actor._set_selected_indicator(true)
-	# for enemy in _enemies:
-	# 	enemy.set_target(_actor)
+	for enemy in _enemies:
+		enemy.set_target(_actors[0])
 
 
 func _input(event: InputEvent) -> void:
