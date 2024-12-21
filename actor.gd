@@ -29,7 +29,7 @@ var _is_ready_to_shoot: bool = true
 @onready var gun_cycle_timer: Timer = get_node("Rifle/GunCycleTimer")
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var hitbox_component: HitboxComponent = get_node("HitboxComponent")
-@onready var model_mesh: MeshInstance3D = get_node("Model/MeshInstance3D")
+@onready var model_mesh: MeshInstance3D = get_node("Model/HeadMesh")
 
 
 func _ready() -> void:
