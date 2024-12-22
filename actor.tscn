@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c5kqo4s4wkjd5"]
+[gd_scene load_steps=25 format=3 uid="uid://c5kqo4s4wkjd5"]
 
 [ext_resource type="Script" path="res://actor.gd" id="1_myqgh"]
 [ext_resource type="PackedScene" uid="uid://dgrssvrpv4sjq" path="res://bullet.tscn" id="2_e0vk7"]
@@ -11,6 +11,7 @@
 height = 1.25773
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ydqao"]
+height = 2.23203
 
 [sub_resource type="BoxMesh" id="BoxMesh_64hak"]
 size = Vector3(0.3, 0.3, 0.3)
@@ -32,6 +33,15 @@ size = Vector3(0.2, 0.5, 0.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hp0ng"]
 size = Vector3(0.15, 0.18, 0.18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0nuhv"]
+size = Vector3(0.2, 0.4, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fbouc"]
+size = Vector3(0.2, 0.4, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pa4or"]
+size = Vector3(0.2, 0.15, 0.3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wsk55"]
 size = Vector3(0.2, 0.2, 1)
@@ -231,47 +241,47 @@ avoidance_enabled = true
 radius = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13448, 0)
 shape = SubResource("CapsuleShape3D_ydqao")
 
 [node name="Model" type="Node3D" parent="."]
 
 [node name="HeadMesh" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 0.999979, 0.00647513, 0, -0.00647513, 0.999979, 0, 1.70714, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999979, 0.00647513, 0, -0.00647513, 0.999979, 0, 2.04693, 0)
 mesh = SubResource("BoxMesh_64hak")
 
 [node name="NeckMesh" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 0.999979, 0.00647513, 0, -0.00647513, 0.999979, 0, 1.49635, -0.0459267)
+transform = Transform3D(1, 0, 0, 0, 0.999979, 0.00647513, 0, -0.00647513, 0.999979, 0, 1.83614, -0.0459267)
 mesh = SubResource("BoxMesh_vg2ed")
 
 [node name="ChestMesh" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 0.998879, -0.0473331, 0, 0.0473331, 0.998879, 0, 1.17796, 0)
+transform = Transform3D(1, 0, 0, 0, 0.998879, -0.0473331, 0, 0.0473331, 0.998879, 0, 1.51775, 0)
 mesh = SubResource("BoxMesh_e5rha")
 
 [node name="GutMesh" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779804, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1196, 0)
 mesh = SubResource("BoxMesh_kvk35")
 
 [node name="RightArm" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.232064, 1.38575, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.232064, 1.72554, 0)
 
 [node name="RightArmUpperMesh" type="MeshInstance3D" parent="Model/RightArm"]
-transform = Transform3D(0.364682, 0.931132, 0, -0.931132, 0.364682, 0, 0, 0, 1, -0.225366, -0.104319, 0)
+transform = Transform3D(0.364677, 0.931134, 0, -0.931134, 0.364677, 0, 0, 0, 1, -0.225366, -0.104319, 0)
 mesh = SubResource("BoxMesh_jdkks")
 skeleton = NodePath("../..")
 
 [node name="RightArmLowerMesh" type="MeshInstance3D" parent="Model/RightArm"]
-transform = Transform3D(0.364682, 0.931132, 0, -0.931132, 0.364682, 0, 0, 0, 1, -0.698187, -0.285616, 0)
+transform = Transform3D(0.364677, 0.931134, 0, -0.931134, 0.364677, 0, 0, 0, 1, -0.698187, -0.285616, 0)
 mesh = SubResource("BoxMesh_vpqsh")
 skeleton = NodePath("../..")
 
 [node name="RightHand" type="MeshInstance3D" parent="Model/RightArm"]
-transform = Transform3D(0.364682, 0.931132, 0, -0.931132, 0.364682, 0, 0, 0, 1, -1.00059, -0.410151, 0)
+transform = Transform3D(0.364677, 0.931134, 0, -0.931134, 0.364677, 0, 0, 0, 1, -1.00059, -0.410151, 0)
 mesh = SubResource("BoxMesh_hp0ng")
 skeleton = NodePath("../..")
 
 [node name="LeftArm" type="Node3D" parent="Model"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.232, 1.386, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.232, 1.72579, 0)
 
 [node name="LeftArmUpperMesh" type="MeshInstance3D" parent="Model/LeftArm"]
 transform = Transform3D(0.364682, 0.931132, 0, -0.931132, 0.364682, 0, 0, 0, 1, -0.225366, -0.104319, 0)
@@ -288,8 +298,44 @@ transform = Transform3D(0.364682, 0.931132, 0, -0.931132, 0.364682, 0, 0, 0, 1, 
 mesh = SubResource("BoxMesh_hp0ng")
 skeleton = NodePath("../..")
 
+[node name="RightLeg" type="Node3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.131645, 0.969054, 0)
+
+[node name="RightLegUpper" type="MeshInstance3D" parent="Model/RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.204817, 0)
+mesh = SubResource("BoxMesh_0nuhv")
+skeleton = NodePath("../..")
+
+[node name="RightLegLower" type="MeshInstance3D" parent="Model/RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.613203, 0)
+mesh = SubResource("BoxMesh_fbouc")
+skeleton = NodePath("../..")
+
+[node name="RightFoot" type="MeshInstance3D" parent="Model/RightLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.892287, 0.0544878)
+mesh = SubResource("BoxMesh_pa4or")
+skeleton = NodePath("../..")
+
+[node name="LeftLeg" type="Node3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132, 0.968792, 0)
+
+[node name="LeftLegUpper" type="MeshInstance3D" parent="Model/LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.204817, 0)
+mesh = SubResource("BoxMesh_0nuhv")
+skeleton = NodePath("../..")
+
+[node name="LeftLegLower" type="MeshInstance3D" parent="Model/LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.613203, 0)
+mesh = SubResource("BoxMesh_fbouc")
+skeleton = NodePath("../..")
+
+[node name="LeftFoot" type="MeshInstance3D" parent="Model/LeftLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.892287, 0.0544878)
+mesh = SubResource("BoxMesh_pa4or")
+skeleton = NodePath("../..")
+
 [node name="Rifle" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325076, 1.20164, 0.469448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325076, 1.40164, 0.469448)
 mesh = SubResource("BoxMesh_wsk55")
 
 [node name="RayCast3D" type="RayCast3D" parent="Rifle"]
