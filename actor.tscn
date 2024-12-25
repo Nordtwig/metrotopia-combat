@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://c5kqo4s4wkjd5"]
+[gd_scene load_steps=17 format=3 uid="uid://c5kqo4s4wkjd5"]
 
 [ext_resource type="Script" path="res://actor.gd" id="1_myqgh"]
 [ext_resource type="PackedScene" uid="uid://dgrssvrpv4sjq" path="res://bullet.tscn" id="2_e0vk7"]
 [ext_resource type="PackedScene" uid="uid://cu880p0tpneo2" path="res://health_component.tscn" id="3_wcl3b"]
 [ext_resource type="PackedScene" uid="uid://bb4vjtpos5oxw" path="res://hitbox_component.tscn" id="4_jgko4"]
+[ext_resource type="PackedScene" uid="uid://bgcg1em7wn163" path="res://male_lowpoly.glb" id="5_nwcrx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6g36a"]
 
@@ -11,200 +12,14 @@
 height = 1.25773
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ydqao"]
-height = 2.23203
+radius = 0.891218
+height = 1.89341
 
-[sub_resource type="BoxMesh" id="BoxMesh_64hak"]
-size = Vector3(0.3, 0.3, 0.3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vg2ed"]
-size = Vector3(0.2, 0.2, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_e5rha"]
-size = Vector3(0.6, 0.5, 0.4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kvk35"]
-size = Vector3(0.45, 0.3, 0.37)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jdkks"]
-size = Vector3(0.2, 0.5, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vpqsh"]
-size = Vector3(0.2, 0.5, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hp0ng"]
-size = Vector3(0.15, 0.18, 0.18)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0nuhv"]
-size = Vector3(0.2, 0.4, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fbouc"]
-size = Vector3(0.2, 0.4, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pa4or"]
-size = Vector3(0.2, 0.15, 0.3)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1guks"]
+albedo_color = Color(0.442895, 0.715395, 0.915309, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wsk55"]
-size = Vector3(0.2, 0.2, 1)
-
-[sub_resource type="Animation" id="Animation_l4ph3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/RightArm/RightArmUpperMesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.225366, -0.104319, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Model/RightArm/RightArmUpperMesh:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.19751)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Model/RightArm/RightArmLowerMesh:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.698187, -0.285616, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Model/RightArm/RightArmLowerMesh:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.19751)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Model/RightArm/RightHand:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.00059, -0.410151, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Model/RightArm/RightHand:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.19751)]
-}
-
-[sub_resource type="Animation" id="Animation_i633r"]
-resource_name = "die"
-
-[sub_resource type="Animation" id="Animation_mhh3g"]
-resource_name = "t_pose"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model/RightArm/RightArmUpperMesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.225366, -0.104319, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Model/RightArm/RightArmUpperMesh:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.19751)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Model/RightArm/RightArmLowerMesh:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.698187, -0.285616, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Model/RightArm/RightArmLowerMesh:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.19751)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Model/RightArm/RightHand:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.00059, -0.410151, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Model/RightArm/RightHand:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -1.19751)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i83m5"]
-_data = {
-"RESET": SubResource("Animation_l4ph3"),
-"die": SubResource("Animation_i633r"),
-"t_pose": SubResource("Animation_mhh3g")
-}
+size = Vector3(0.1, 0.1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xemqo"]
 transparency = 1
@@ -216,16 +31,38 @@ billboard_mode = 2
 material = SubResource("StandardMaterial3D_xemqo")
 inner_radius = 0.875
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0g3hk"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_out7m"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_oredb"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_0g3hk")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_out7m")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kr1sr"]
+graph_offset = Vector2(-350.465, 4.26295)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_oredb")
+nodes/BlendSpace1D/position = Vector2(-60, 140)
+node_connections = [&"output", 0, &"BlendSpace1D"]
+
 [node name="Actor" type="CharacterBody3D" groups=["actors"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_myqgh")
+_movement_speed = null
 _bullet_scene = ExtResource("2_e0vk7")
+actor_faction = null
+actor_state = null
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_wcl3b")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_jgko4")]
-collision_mask = 0
+collision_layer = 16
 health_component = NodePath("../HealthComponent")
 
 [node name="HeadHitboxCollisionShape" type="CollisionShape3D" parent="HitboxComponent"]
@@ -237,105 +74,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.731769, 0)
 shape = SubResource("CylinderShape3D_teoy4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+target_desired_distance = 0.6
 avoidance_enabled = true
 radius = 1.0
+debug_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13448, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953258, 0)
 shape = SubResource("CapsuleShape3D_ydqao")
 
-[node name="Model" type="Node3D" parent="."]
+[node name="Model2" parent="." instance=ExtResource("5_nwcrx")]
 
-[node name="HeadMesh" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 0.999979, 0.00647513, 0, -0.00647513, 0.999979, 0, 2.04693, 0)
-mesh = SubResource("BoxMesh_64hak")
+[node name="Skeleton3D" parent="Model2/Armature" index="0"]
+bones/0/position = Vector3(0, 1.01437, -1.53752e-09)
+bones/1/rotation = Quaternion(0.131738, 1.1817e-07, 1.57044e-08, 0.991285)
+bones/2/rotation = Quaternion(-0.00347768, -0.0174734, 0.99463, -0.101953)
+bones/4/rotation = Quaternion(0.0479055, 0.010316, 0.99771, -0.0466115)
+bones/4/scale = Vector3(1.00003, 1, 1)
+bones/5/rotation = Quaternion(-0.108516, 0.000120003, -0.00383166, 0.994087)
+bones/6/rotation = Quaternion(0.590189, 0.0261759, -0.0588715, 0.80469)
+bones/6/scale = Vector3(1.00001, 0.999999, 1)
+bones/7/rotation = Quaternion(0.00307607, -0.0174934, 0.995767, 0.0901843)
+bones/9/rotation = Quaternion(-0.0628829, 0.0108761, 0.996802, 0.0481046)
+bones/9/scale = Vector3(1.00003, 1, 1)
+bones/10/rotation = Quaternion(-0.108516, -0.000120007, 0.00383166, 0.994087)
+bones/11/rotation = Quaternion(0.58915, -0.0391948, 0.0664208, 0.804335)
+bones/11/scale = Vector3(1.00001, 0.999999, 1)
 
-[node name="NeckMesh" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 0.999979, 0.00647513, 0, -0.00647513, 0.999979, 0, 1.83614, -0.0459267)
-mesh = SubResource("BoxMesh_vg2ed")
+[node name="Cube" parent="Model2/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1guks")
 
-[node name="ChestMesh" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 0.998879, -0.0473331, 0, 0.0473331, 0.998879, 0, 1.51775, 0)
-mesh = SubResource("BoxMesh_e5rha")
-
-[node name="GutMesh" type="MeshInstance3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1196, 0)
-mesh = SubResource("BoxMesh_kvk35")
-
-[node name="RightArm" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.232064, 1.72554, 0)
-
-[node name="RightArmUpperMesh" type="MeshInstance3D" parent="Model/RightArm"]
-transform = Transform3D(0.364677, 0.931134, 0, -0.931134, 0.364677, 0, 0, 0, 1, -0.225366, -0.104319, 0)
-mesh = SubResource("BoxMesh_jdkks")
-skeleton = NodePath("../..")
-
-[node name="RightArmLowerMesh" type="MeshInstance3D" parent="Model/RightArm"]
-transform = Transform3D(0.364677, 0.931134, 0, -0.931134, 0.364677, 0, 0, 0, 1, -0.698187, -0.285616, 0)
-mesh = SubResource("BoxMesh_vpqsh")
-skeleton = NodePath("../..")
-
-[node name="RightHand" type="MeshInstance3D" parent="Model/RightArm"]
-transform = Transform3D(0.364677, 0.931134, 0, -0.931134, 0.364677, 0, 0, 0, 1, -1.00059, -0.410151, 0)
-mesh = SubResource("BoxMesh_hp0ng")
-skeleton = NodePath("../..")
-
-[node name="LeftArm" type="Node3D" parent="Model"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.232, 1.72579, 0)
-
-[node name="LeftArmUpperMesh" type="MeshInstance3D" parent="Model/LeftArm"]
-transform = Transform3D(0.364682, 0.931132, 0, -0.931132, 0.364682, 0, 0, 0, 1, -0.225366, -0.104319, 0)
-mesh = SubResource("BoxMesh_jdkks")
-skeleton = NodePath("../..")
-
-[node name="LeftArmLowerMesh" type="MeshInstance3D" parent="Model/LeftArm"]
-transform = Transform3D(0.364682, 0.931132, 0, -0.931132, 0.364682, 0, 0, 0, 1, -0.698187, -0.285616, 0)
-mesh = SubResource("BoxMesh_vpqsh")
-skeleton = NodePath("../..")
-
-[node name="LeftHand" type="MeshInstance3D" parent="Model/LeftArm"]
-transform = Transform3D(0.364682, 0.931132, 0, -0.931132, 0.364682, 0, 0, 0, 1, -1.00059, -0.410151, 0)
-mesh = SubResource("BoxMesh_hp0ng")
-skeleton = NodePath("../..")
-
-[node name="RightLeg" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.131645, 0.969054, 0)
-
-[node name="RightLegUpper" type="MeshInstance3D" parent="Model/RightLeg"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.204817, 0)
-mesh = SubResource("BoxMesh_0nuhv")
-skeleton = NodePath("../..")
-
-[node name="RightLegLower" type="MeshInstance3D" parent="Model/RightLeg"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.613203, 0)
-mesh = SubResource("BoxMesh_fbouc")
-skeleton = NodePath("../..")
-
-[node name="RightFoot" type="MeshInstance3D" parent="Model/RightLeg"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.892287, 0.0544878)
-mesh = SubResource("BoxMesh_pa4or")
-skeleton = NodePath("../..")
-
-[node name="LeftLeg" type="Node3D" parent="Model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132, 0.968792, 0)
-
-[node name="LeftLegUpper" type="MeshInstance3D" parent="Model/LeftLeg"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.204817, 0)
-mesh = SubResource("BoxMesh_0nuhv")
-skeleton = NodePath("../..")
-
-[node name="LeftLegLower" type="MeshInstance3D" parent="Model/LeftLeg"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.613203, 0)
-mesh = SubResource("BoxMesh_fbouc")
-skeleton = NodePath("../..")
-
-[node name="LeftFoot" type="MeshInstance3D" parent="Model/LeftLeg"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00332029, -0.892287, 0.0544878)
-mesh = SubResource("BoxMesh_pa4or")
-skeleton = NodePath("../..")
+[node name="AnimationPlayer" parent="Model2" index="1"]
+autoplay = "idle"
 
 [node name="Rifle" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325076, 1.40164, 0.469448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.174918, 1.2571, 0.469448)
 mesh = SubResource("BoxMesh_wsk55")
 
 [node name="RayCast3D" type="RayCast3D" parent="Rifle"]
@@ -348,12 +122,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.780375)
 
 [node name="GunCycleTimer" type="Timer" parent="Rifle"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_i83m5")
-}
-
 [node name="SelectedIndicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.365021, 0, 0, 0, 1, 0, 0.110674, 0)
 visible = false
 mesh = SubResource("TorusMesh_ycaxe")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Model2")
+tree_root = SubResource("AnimationNodeBlendTree_kr1sr")
+anim_player = NodePath("../Model2/AnimationPlayer")
+parameters/BlendSpace1D/blend_position = 0
+
+[editable path="Model2"]

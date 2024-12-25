@@ -20,8 +20,7 @@ height = 0.4
 radius = 0.164074
 
 [node name="Bullet" node_paths=PackedStringArray("hitscan_component") instance=ExtResource("1_nbh1a")]
-collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("2_7e8up")
 hitscan_component = NodePath("HitscanComponent")
@@ -35,7 +34,7 @@ mesh = SubResource("SphereMesh_8mmm8")
 
 [node name="HitscanComponent" type="Area3D" parent="." index="2"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitscanComponent" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.144481)

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://d3qt77slbpjhv"]
 
 [node name="Projectile" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 21
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

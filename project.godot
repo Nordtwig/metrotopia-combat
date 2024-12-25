@@ -65,3 +65,4 @@ shift_modifier={
 3d_physics/layer_2="actors"
 3d_physics/layer_3="projectiles"
 3d_physics/layer_4="obstacles"
+3d_physics/layer_5="hitboxes"

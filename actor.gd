@@ -27,9 +27,9 @@ var _is_ready_to_shoot: bool = true
 @onready var muzzle_marker: Marker3D = get_node("Rifle/MuzzleMarker")
 @onready var muzzle_raycast: RayCast3D = get_node("Rifle/RayCast3D")
 @onready var gun_cycle_timer: Timer = get_node("Rifle/GunCycleTimer")
-@onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
+@onready var anim_tree: AnimationTree = get_node("AnimationTree")
 @onready var hitbox_component: HitboxComponent = get_node("HitboxComponent")
-@onready var model_mesh: MeshInstance3D = get_node("Model/HeadMesh")
+@onready var model_mesh: MeshInstance3D = get_node("Model2/Armature/Skeleton3D/Cube")
 
 
 func _ready() -> void:
@@ -40,6 +40,7 @@ func _ready() -> void:
 	
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	gun_cycle_timer.timeout.connect(_on_gun_cycle_timer_timeout)
+	nav_agent.navigation_finished.connect(_on_navigation_finished)
 	Events.actor_died.connect(_on_actor_died)
 	Events.clickable_clicked.connect(_on_clickable_clicked)
 
@@ -68,7 +69,14 @@ func _physics_process(delta: float) -> void:
 
 	if _target:
 		_face_target(delta)
+	else:
+		var position_2d: Vector2 = Vector2(global_position.x, global_position.z)
+		var target_position_2d: Vector2 = Vector2(nav_agent.get_next_path_position().x, nav_agent.get_next_path_position().z)
+		var direction_to_face = -(position_2d - target_position_2d)
+		rotation.y = lerp_angle(rotation.y, atan2(direction_to_face.x, direction_to_face.y), delta / 0.15)
 	
+	anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / _movement_speed)
+
 	if nav_agent.is_navigation_finished():
 		return
 
@@ -78,6 +86,7 @@ func _physics_process(delta: float) -> void:
 		nav_agent.set_velocity(new_velocity)
 	else:
 		_on_velocity_computed(new_velocity)
+
 
 
 func _face_target(delta: float) -> void:
@@ -123,7 +132,6 @@ func _shoot() -> void:
 func _die() -> void:
 	if actor_state != STATE.DEAD:
 		actor_state = STATE.DEAD
-		animation_player.play("die")
 		Events.actor_died.emit(self)
 		velocity = Vector3.ZERO
 		$Rifle.visible = false
@@ -164,3 +172,7 @@ func _on_clickable_clicked(node: Node3D) -> void:
 
 	_set_selected_indicator(true)
 	Events.playable_actor_selected.emit(self)
+
+
+func _on_navigation_finished() -> void:
+	velocity = Vector3.ZERO
