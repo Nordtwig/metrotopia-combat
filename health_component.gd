@@ -12,8 +12,7 @@ func _ready() -> void:
 
 
 func take_damage(attack) -> void:
-	print("took damage")
 	health -= attack.attack_damage
 
 	if health <= 0:
-		get_parent()._die()
+		get_parent()._die(attack)

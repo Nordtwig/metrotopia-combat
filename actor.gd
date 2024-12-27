@@ -30,6 +30,7 @@ var _is_ready_to_shoot: bool = true
 @onready var anim_tree: AnimationTree = get_node("AnimationTree")
 @onready var hitbox_component: HitboxComponent = get_node("HitboxComponent")
 @onready var model_mesh: MeshInstance3D = get_node("Model2/Armature/Skeleton3D/Cube")
+@onready var skeleton: Skeleton3D = get_node("Model2/Armature/Skeleton3D")
 
 
 func _ready() -> void:
@@ -129,8 +130,11 @@ func _shoot() -> void:
 	gun_cycle_timer.start()
 
 
-func _die() -> void:
+func _die(attack: Attack) -> void:
 	if actor_state != STATE.DEAD:
+		skeleton.physical_bones_start_simulation()
+		var body = skeleton.get_node("Physical Bone body") as PhysicalBone3D
+		body.apply_impulse(-(attack.attack_position - body.global_position * 5), attack.attack_position)
 		actor_state = STATE.DEAD
 		Events.actor_died.emit(self)
 		velocity = Vector3.ZERO

@@ -93,30 +93,44 @@ navigation_mesh = SubResource("NavigationMesh_qgygl")
 [node name="Actors" type="Node3D" parent="."]
 
 [node name="Actor" parent="Actors" instance=ExtResource("1_ofkfo")]
+_movement_speed = 4.0
+actor_faction = 0
+actor_state = 0
 uniform_material = ExtResource("5_vcap6")
 
 [node name="Actor6" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(-0.74536, 0, -0.666663, 0, 1, 0, 0.666663, 0, -0.74536, -2.40106, 0, 5.43902)
+_movement_speed = 4.0
+actor_faction = 0
+actor_state = 0
 uniform_material = ExtResource("5_vcap6")
 
 [node name="Actor2" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(0.291787, 0, -0.956483, 0, 1, 0, 0.956483, 0, 0.291787, 7.675, 0, -7.49206)
+_movement_speed = 4.0
 actor_faction = 2
+actor_state = 0
 uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor3" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(-0.230186, 0, 0.973147, 0, 1, 0, -0.973147, 0, -0.230186, -6.20343, 0, -2.84393)
+_movement_speed = 4.0
 actor_faction = 2
+actor_state = 0
 uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor4" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(-0.788075, 0, 0.615579, 0, 1, 0, -0.615579, 0, -0.788075, -8.06587, 0, 7.90332)
+_movement_speed = 4.0
 actor_faction = 2
+actor_state = 0
 uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor5" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3556, 0, -8.43471)
+_movement_speed = 4.0
 actor_faction = 3
+actor_state = 0
 uniform_material = ExtResource("6_iss8g")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["ground"]]
