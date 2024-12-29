@@ -93,44 +93,83 @@ navigation_mesh = SubResource("NavigationMesh_qgygl")
 [node name="Actors" type="Node3D" parent="."]
 
 [node name="Actor" parent="Actors" instance=ExtResource("1_ofkfo")]
-_movement_speed = 4.0
-actor_faction = 0
-actor_state = 0
 uniform_material = ExtResource("5_vcap6")
+
+[node name="Physical Bone head" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 2.94008e-10, 2.37718e-07, 2.33216e-07, -0.207065, -0.978164, 4.93474e-08, 0.978164, -0.207065, -4.31631e-09, 1.73717, -0.0201051)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77627e-08, 0.0175727, 0.134924)
+body_offset = Transform3D(1, -2.38084e-07, 2.36774e-07, 2.38378e-07, 0.00395888, -0.999833, 2.37453e-07, 0.999833, 0.00395888, 0, 0.134832, -0.0181039)
+
+[node name="Physical Bone body" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.999747, 0.0012044, -0.0232661, -0.023298, 0.0516437, -0.998435, -4.76954e-07, 0.998696, 0.0516551, -3.21865e-06, 1.30329, -0.0154263)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00695144, 3.80126e-06, 0.298566)
+body_offset = Transform3D(0.999747, 0.0012044, -0.0232661, -0.0232669, -1.22264e-05, -0.99977, -0.00120392, 1.00003, 1.27032e-05, -3.21865e-06, 0.298659, 7.7486e-07)
+
+[node name="Physical Bone upper_arm_l" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.971409, -0.00390928, -0.236494, -0.236325, 0.0160767, 0.971585, -2.94854e-05, 1.00027, -0.0165372, 0.229919, 1.40209, -0.0304811)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00837997, 5.69869e-05, 0.15358)
+body_offset = Transform3D(0.999742, -2.33483e-06, -8.22045e-05, -0.000206039, 5.99399e-06, -1.00009, -2.89539e-05, 1.00041, 8.64267e-06, 0.00839043, 0.153592, -5.85802e-05)
+
+[node name="Physical Bone lower_arm_l" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="4"]
+transform = Transform3D(-0.987397, 0.150487, -0.0390454, -0.155555, -0.956307, 0.248166, 0.000415909, 0.251217, 0.967895, 0.272437, 1.26296, -0.0280194)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84586e-06, 9.4152e-06, -2.23649e-06)
+body_offset = Transform3D(0.999574, 2.67331e-05, -1.10529e-05, 0.000245713, 1.00014, -3.11881e-05, 0.000363518, -1.59591e-05, 0.999966, -3.8445e-06, -9.41753e-06, 2.23517e-06)
+
+[node name="Physical Bone upper_leg_l" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="5"]
+transform = Transform3D(-0.990708, 0.0885395, -0.103567, -0.090128, 0.143864, 0.985772, 0.102148, 0.985538, -0.134636, 0.115832, 0.821096, 0.00617606)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40857e-06, 2.34637e-05, 0.239955)
+body_offset = Transform3D(1, -3.91155e-06, 1.80397e-06, -4.83729e-06, 2.19047e-06, -1.0003, -8.50111e-06, 0.999911, -4.00841e-05, -2.84135e-06, 0.240027, -1.38432e-05)
+
+[node name="Physical Bone lower_leg_l" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="6"]
+transform = Transform3D(-0.991802, 0.116498, -0.0545827, -0.0778207, -0.20532, 0.975871, 0.102439, 0.971757, 0.212689, 0.154165, 0.343664, -0.0139853)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20451e-06, 1.34353e-05, 0.246724)
+body_offset = Transform3D(1.00008, -4.19021e-05, -3.41982e-06, 1.59629e-05, -1.38879e-05, -1.00027, 2.29627e-05, 1.00002, -5.61476e-05, -5.36069e-06, 0.246791, 4.17233e-07)
+
+[node name="Physical Bone upper_arm_r" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="7"]
+transform = Transform3D(-0.975564, 0.00359605, 0.217019, 0.217399, 0.0161306, 0.97314, -9.78994e-06, 0.994814, -0.0164362, -0.224844, 1.40732, -0.0304081)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00922375, -0.000124661, 0.147934)
+body_offset = Transform3D(0.999493, -2.69152e-07, 8.07568e-05, 0.000237779, -6.58818e-05, -0.99718, -1.09067e-05, 0.994951, 6.14412e-05, -0.00923102, 0.147515, 0.000115043)
+
+[node name="Physical Bone lower_arm_r" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="8"]
+transform = Transform3D(-0.981373, -0.189608, 0.00556971, -0.0534661, 0.302888, 0.948038, -0.182203, 0.931996, -0.30743, -0.268067, 1.26162, -0.0280437)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00124611, -0.000213202, 1.27144e-05)
+body_offset = Transform3D(0.96492, 0.229129, 0.123732, 0.135004, -0.0313027, -0.987032, -0.223273, 0.970994, -0.0614606, 0.00124967, 0.000174105, -7.04229e-05)
+
+[node name="Physical Bone upper_leg_r" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="9"]
+transform = Transform3D(-0.986925, -0.117749, 0.108625, 0.091073, 0.146094, 0.981641, -0.132082, 0.980621, -0.133355, -0.117097, 0.821168, 0.00600297)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83513e-05, 2.02086e-05, 0.240887)
+body_offset = Transform3D(0.99985, -7.21216e-06, -0.000171268, 1.89692e-05, 5.76377e-05, -0.996595, -3.8743e-07, 0.998412, -9.23574e-05, -7.0876e-06, 0.240067, 2.07126e-06)
+
+[node name="Physical Bone lower_leg_r" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="10"]
+transform = Transform3D(-0.988177, -0.145917, 0.0494314, 0.0787756, -0.202824, 0.976048, -0.132365, 0.968324, 0.211832, -0.155421, 0.343958, -0.014134)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.16839e-07, 9.20091e-06, 0.246603)
+body_offset = Transform3D(1.00008, 3.72157e-05, 3.35276e-07, -1.46404e-06, -5.99027e-06, -0.999993, 4.67896e-06, 1.00004, -6.36578e-05, 7.33882e-07, 0.246601, 6.49691e-06)
+
+[node name="SkeletonIK3D" parent="Actors/Actor/Model2/Armature/Skeleton3D" index="11"]
+target_node = NodePath("../../../../../../AimIndicator")
 
 [node name="Actor6" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(-0.74536, 0, -0.666663, 0, 1, 0, 0.666663, 0, -0.74536, -2.40106, 0, 5.43902)
-_movement_speed = 4.0
-actor_faction = 0
-actor_state = 0
 uniform_material = ExtResource("5_vcap6")
 
 [node name="Actor2" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(0.291787, 0, -0.956483, 0, 1, 0, 0.956483, 0, 0.291787, 7.675, 0, -7.49206)
-_movement_speed = 4.0
 actor_faction = 2
-actor_state = 0
 uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor3" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(-0.230186, 0, 0.973147, 0, 1, 0, -0.973147, 0, -0.230186, -6.20343, 0, -2.84393)
-_movement_speed = 4.0
 actor_faction = 2
-actor_state = 0
 uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor4" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(-0.788075, 0, 0.615579, 0, 1, 0, -0.615579, 0, -0.788075, -8.06587, 0, 7.90332)
-_movement_speed = 4.0
 actor_faction = 2
-actor_state = 0
 uniform_material = ExtResource("6_nxp1p")
 
 [node name="Actor5" parent="Actors" instance=ExtResource("1_ofkfo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3556, 0, -8.43471)
-_movement_speed = 4.0
 actor_faction = 3
-actor_state = 0
 uniform_material = ExtResource("6_iss8g")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["ground"]]
@@ -143,3 +182,6 @@ mesh = SubResource("SphereMesh_g5d31")
 
 [node name="AimIndicator" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_usyuv")
+
+[editable path="Actors/Actor"]
+[editable path="Actors/Actor/Model2"]

@@ -1,5 +1,5 @@
 extends Node
 
-signal clickable_clicked(node: Node3D)
+signal clicked(click_data: ClickData)
 signal actor_died(actor: Actor)
 signal playable_actor_selected(actor: Actor)

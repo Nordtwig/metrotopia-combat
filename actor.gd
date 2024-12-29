@@ -2,6 +2,8 @@ extends CharacterBody3D
 class_name Actor
 
 
+signal clicked_while_selected(click_data: ClickData)
+
 enum FACTION  {
 	PLAYER,
 	MERC,
@@ -23,7 +25,7 @@ enum STATE {
 var _target: Node3D = null
 var _is_ready_to_shoot: bool = true
 
-@onready var nav_agent: NavigationAgent3D = get_node("NavigationAgent3D")
+@onready var nav_agent: NavigationAgent3D = get_node("NavComponent")
 @onready var muzzle_marker: Marker3D = get_node("Rifle/MuzzleMarker")
 @onready var muzzle_raycast: RayCast3D = get_node("Rifle/RayCast3D")
 @onready var gun_cycle_timer: Timer = get_node("Rifle/GunCycleTimer")
@@ -43,9 +45,14 @@ func _ready() -> void:
 	gun_cycle_timer.timeout.connect(_on_gun_cycle_timer_timeout)
 	nav_agent.navigation_finished.connect(_on_navigation_finished)
 	Events.actor_died.connect(_on_actor_died)
-	Events.clickable_clicked.connect(_on_clickable_clicked)
+	Events.clicked.connect(_on_clicked)
 
 	model_mesh.material_override = uniform_material
+	
+	var skeleton_ik = skeleton.get_node("SkeletonIK3D") as SkeletonIK3D
+	var skeleton_ik2 = skeleton.get_node("SkeletonIK3D2") as SkeletonIK3D
+	skeleton_ik.start()
+	skeleton_ik2.start()
 
 	match actor_state:
 		STATE.ALIVE:
@@ -93,6 +100,9 @@ func _physics_process(delta: float) -> void:
 func _face_target(delta: float) -> void:
 	var direction_to_face = get_rotation_to_target()
 	rotation.y = lerp_angle(rotation.y, atan2(direction_to_face.x, direction_to_face.y), delta / 0.15)
+	
+	
+	# skeleton_ik.target = _target.transform
 
 
 func set_movement_target(_target_position: Vector3) -> void:
@@ -133,8 +143,6 @@ func _shoot() -> void:
 func _die(attack: Attack) -> void:
 	if actor_state != STATE.DEAD:
 		skeleton.physical_bones_start_simulation()
-		var body = skeleton.get_node("Physical Bone body") as PhysicalBone3D
-		body.apply_impulse(-(attack.attack_position - body.global_position * 5), attack.attack_position)
 		actor_state = STATE.DEAD
 		Events.actor_died.emit(self)
 		velocity = Vector3.ZERO
@@ -163,14 +171,14 @@ func _on_actor_died(actor: Actor)  -> void:
 		_target = null
 
 
-func _on_clickable_clicked(node: Node3D) -> void:
-	if !node.is_in_group("actors"):
+func _on_clicked(click_data: ClickData) -> void:
+	if click_data.clicked_node != self:
+		return
+		
+	if !click_data.clicked_node.is_in_group("actors"):
 		_set_selected_indicator(false)
 		return
 	
-	if node != self:
-		return
-
 	if actor_faction != FACTION.PLAYER:
 		return
 

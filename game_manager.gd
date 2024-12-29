@@ -34,30 +34,37 @@ func _input(event: InputEvent) -> void:
 		if intersection.size() <= 0:
 			return
 
-		var target_position: Vector3 = intersection["position"] as Vector3
-		
-		if event.is_action_pressed("right_click"):
-			if intersection.collider.is_in_group("ground"):
-				for actor in _actors:
-					actor.set_movement_target(target_position)
-				_indicator.global_position = target_position
-			elif intersection.collider.is_in_group("actors"):
-				for actor in _actors:
-					actor.set_target(intersection.collider)
-				_aim_indicator.global_position = intersection.collider.global_position
+		# var target_position: Vector3 = intersection["position"] as Vector3
 
-		if event.is_action_pressed("left_click"):
-			if intersection.collider.is_in_group("ground"):
-				for actor in _actors:
-					actor._set_selected_indicator(false)
-					_actors.erase(actor)
-			elif intersection.collider.is_in_group("actors"):
-				if Input.is_action_pressed("shift_modifier"):
-					Events.clickable_clicked.emit(intersection.collider)
-				else:
-					for actor in _actors:
-						actor._set_selected_indicator(false)
-				Events.clickable_clicked.emit(intersection.collider)
+		var click_data = ClickData.new()
+		click_data.button = event
+		click_data.clicked_node = intersection.collider
+		click_data.clicked_position = intersection["position"] as Vector3
+
+		Events.clicked.emit(click_data)
+
+		# if event.is_action_pressed("right_click"):
+		# 	if intersection.collider.is_in_group("ground"):
+		# 		for actor in _actors:
+		# 			actor.set_movement_target(target_position)
+		# 		_indicator.global_position = target_position
+		# 	elif intersection.collider.is_in_group("actors"):
+		# 		for actor in _actors:
+		# 			actor.set_target(intersection.collider)
+		# 		_aim_indicator.global_position = intersection.collider.global_position
+
+		# if event.is_action_pressed("left_click"):
+		# 	if intersection.collider.is_in_group("ground"):
+		# 		for actor in _actors:
+		# 			actor._set_selected_indicator(false)
+		# 			_actors.erase(actor)
+		# 	elif intersection.collider.is_in_group("actors"):
+		# 		if Input.is_action_pressed("shift_modifier"):
+		# 			Events.clicked.emit(intersection.collider)
+		# 		else:
+		# 			for actor in _actors:
+		# 				actor._set_selected_indicator(false)
+		# 		Events.clicked.emit(intersection.collider)
 	if event.is_action_pressed("ui_accept"):
 		print("toggling mute log")
 		Logger.mute_logs = !Logger.mute_logs
